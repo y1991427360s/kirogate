@@ -192,11 +192,25 @@ Authorization: Bearer kg-xxxxxxxxxxxxxxxx
 
 ### 支持的模型
 
-- `claude-opus-4-5`
-- `claude-sonnet-4-5`
-- `claude-sonnet-4`
-- `claude-haiku-4-5`
-- `claude-3-7-sonnet-20250219`
+`/v1/models` 会返回当前可用模型列表。默认支持以下模型 ID：
+
+| 模型 ID | 说明 |
+|--------|------|
+| `claude-opus-4.7` | Claude Opus 4.7 |
+| `claude-opus-4.6` | Claude Opus 4.6 |
+| `claude-opus-4.5` | Claude Opus 4.5 |
+| `claude-sonnet-4.6` | Claude Sonnet 4.6 |
+| `claude-sonnet-4.5` | Claude Sonnet 4.5 |
+| `claude-sonnet-4` | Claude Sonnet 4 |
+| `claude-haiku-4.5` | Claude Haiku 4.5 |
+| `deepseek-3.2` | DeepSeek 3.2 |
+| `minimax-m2.5` | MiniMax M2.5 |
+| `minimax-m2.1` | MiniMax M2.1 |
+| `glm-5` | GLM 5 |
+| `qwen3-coder-next` | Qwen3 Coder Next |
+| `auto` | 自动选择模型 |
+
+兼容旧版横线写法，例如 `claude-opus-4-5`、`claude-sonnet-4-5`、`claude-haiku-4-5` 和 `claude-3-7-sonnet-20250219`。
 
 ## 💻 SDK 使用示例
 
