@@ -852,8 +852,10 @@ class UserDatabase:
         params: list = [user_id]
         if search:
             like = f"%{search}%"
-            where.append("(CAST(id AS TEXT) LIKE ? OR status LIKE ? OR visibility LIKE ?)")
-            params.extend([like, like, like])
+            where.append(
+                "(CAST(id AS TEXT) LIKE ? OR status LIKE ? OR visibility LIKE ? OR account_email LIKE ?)"
+            )
+            params.extend([like, like, like, like])
         if status:
             where.append("status = ?")
             params.append(status)
@@ -897,8 +899,10 @@ class UserDatabase:
         params: list = [user_id]
         if search:
             like = f"%{search}%"
-            where.append("(CAST(id AS TEXT) LIKE ? OR status LIKE ? OR visibility LIKE ?)")
-            params.extend([like, like, like])
+            where.append(
+                "(CAST(id AS TEXT) LIKE ? OR status LIKE ? OR visibility LIKE ? OR account_email LIKE ?)"
+            )
+            params.extend([like, like, like, like])
         if status:
             where.append("status = ?")
             params.append(status)

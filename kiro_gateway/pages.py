@@ -57,59 +57,54 @@ COMMON_HEAD = r'''
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
-
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
   <style>
     :root {{
-      --primary: #38bdf8;
-      --primary-dark: #0284c7;
-      --primary-light: #7dd3fc;
-      --accent: #22d3ee;
-      --accent-2: #a3e635;
-      --success: #22c55e;
-      --warning: #f59e0b;
-      --danger: #f43f5e;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #60a5fa;
+      --accent: #0f766e;
+      --success: #16a34a;
+      --warning: #d97706;
+      --danger: #dc2626;
+      --radius: 8px;
+      --radius-lg: 10px;
     }}
 
     /* Light mode (default) */
     [data-theme="light"] {{
-      --bg-main: #f4f7fb;
-      --bg-card: rgba(255, 255, 255, 0.78);
-      --bg-nav: rgba(248, 250, 252, 0.82);
-      --bg-input: rgba(255, 255, 255, 0.92);
-      --bg-hover: rgba(226, 232, 240, 0.7);
-      --text: #0f172a;
-      --text-muted: #64748b;
-      --border: rgba(148, 163, 184, 0.35);
-      --border-dark: rgba(100, 116, 139, 0.5);
-      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.08);
-      --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
-      --shadow-lg: 0 24px 48px rgba(15, 23, 42, 0.12);
-      --glow: 0 0 32px rgba(56, 189, 248, 0.18);
-      --grid-line: rgba(148, 163, 184, 0.2);
+      --bg-main: #f7f4ef;
+      --bg-soft: #f1eee8;
+      --bg-card: #ffffff;
+      --bg-nav: rgba(255, 255, 255, 0.9);
+      --bg-input: #fbfaf8;
+      --bg-hover: #f1f5f9;
+      --text: #111827;
+      --text-muted: #667085;
+      --border: #e4e7ec;
+      --border-dark: #cbd5e1;
+      --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.04);
+      --shadow: 0 12px 28px rgba(16, 24, 40, 0.07);
+      --shadow-lg: 0 18px 42px rgba(16, 24, 40, 0.11);
     }}
 
     /* Dark mode */
     [data-theme="dark"] {{
-      --bg-main: #05070f;
-      --bg-card: rgba(15, 23, 42, 0.72);
-      --bg-nav: rgba(7, 10, 18, 0.82);
-      --bg-input: rgba(15, 23, 42, 0.85);
-      --bg-hover: rgba(30, 41, 59, 0.6);
-      --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --border: rgba(148, 163, 184, 0.16);
-      --border-dark: rgba(148, 163, 184, 0.28);
-      --shadow-sm: 0 1px 2px rgba(2, 6, 23, 0.45);
-      --shadow: 0 14px 32px rgba(2, 6, 23, 0.55);
-      --shadow-lg: 0 30px 60px rgba(2, 6, 23, 0.65);
-      --glow: 0 0 40px rgba(56, 189, 248, 0.3);
-      --grid-line: rgba(148, 163, 184, 0.1);
+      --bg-main: #0b1120;
+      --bg-soft: #111827;
+      --bg-card: #111827;
+      --bg-nav: rgba(11, 17, 32, 0.92);
+      --bg-input: #0f172a;
+      --bg-hover: #1f2937;
+      --text: #f8fafc;
+      --text-muted: #a3adbd;
+      --border: rgba(148, 163, 184, 0.22);
+      --border-dark: rgba(203, 213, 225, 0.34);
+      --shadow-sm: 0 1px 2px rgba(2, 6, 23, 0.42);
+      --shadow: 0 14px 32px rgba(2, 6, 23, 0.45);
+      --shadow-lg: 0 24px 58px rgba(2, 6, 23, 0.52);
     }}
 
     * {{
@@ -120,21 +115,19 @@ COMMON_HEAD = r'''
     body {{
       background: var(--bg-main);
       color: var(--text);
-      font-family: 'Sora', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
       transition: background-color 0.3s ease, color 0.3s ease;
       line-height: 1.6;
       min-height: 100vh;
       position: relative;
       isolation: isolate;
+      overflow-x: hidden;
     }}
     body::before {{
       content: '';
       position: fixed;
-      inset: -20% -10% -20% -10%;
-      background:
-        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.25), transparent 45%),
-        radial-gradient(circle at 85% 10%, rgba(34, 211, 238, 0.2), transparent 45%),
-        radial-gradient(circle at 50% 90%, rgba(163, 230, 53, 0.18), transparent 50%);
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(247, 244, 239, 0) 42%);
       z-index: -2;
       pointer-events: none;
     }}
@@ -142,11 +135,8 @@ COMMON_HEAD = r'''
       content: '';
       position: fixed;
       inset: 0;
-      background-image:
-        linear-gradient(var(--grid-line) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-      background-size: 28px 28px;
-      opacity: 0.5;
+      background: linear-gradient(180deg, transparent 0%, var(--bg-soft) 62%, var(--bg-main) 100%);
+      opacity: 0.72;
       z-index: -1;
       pointer-events: none;
     }}
@@ -158,38 +148,40 @@ COMMON_HEAD = r'''
     /* Enhanced card with subtle gradient border */
     .card {{
       background: var(--bg-card);
-      border-radius: 1rem;
+      border-radius: var(--radius-lg);
       padding: 1.5rem;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
-      transition: all 0.3s ease;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
       position: relative;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
     }}
     .card:hover {{
-      box-shadow: var(--shadow-lg), var(--glow);
+      box-shadow: var(--shadow-lg);
       border-color: var(--border-dark);
       transform: translateY(-1px);
     }}
 
     /* Primary button with gradient and glow */
     .btn-primary {{
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 70%, var(--accent-2) 120%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 2.75rem;
+      background: var(--primary);
       color: #ffffff;
       padding: 0.625rem 1.25rem;
-      border-radius: 0.75rem;
+      border-radius: var(--radius);
       font-weight: 600;
-      letter-spacing: 0.01em;
-      transition: all 0.3s ease;
-      box-shadow: 0 12px 24px rgba(56, 189, 248, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.18);
+      border: 1px solid rgba(29, 78, 216, 0.28);
       cursor: pointer;
     }}
     .btn-primary:hover {{
-      transform: translateY(-2px);
-      box-shadow: 0 18px 36px rgba(56, 189, 248, 0.35);
-      filter: brightness(1.05);
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 26px rgba(37, 99, 235, 0.22);
     }}
     .btn-primary:active {{
       transform: translateY(0);
@@ -209,7 +201,7 @@ COMMON_HEAD = r'''
       left: 0;
       width: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--primary), var(--accent), var(--accent-2));
+      background: var(--primary);
       transition: width 0.3s ease;
       border-radius: 1px;
     }}
@@ -222,7 +214,7 @@ COMMON_HEAD = r'''
     .theme-toggle {{
       cursor: pointer;
       padding: 0.5rem;
-      border-radius: 0.625rem;
+      border-radius: var(--radius);
       transition: all 0.2s ease;
       background: transparent;
       border: 1px solid transparent;
@@ -238,7 +230,7 @@ COMMON_HEAD = r'''
       -webkit-overflow-scrolling: touch;
       background: var(--bg-input);
       border: 1px solid var(--border);
-      border-radius: 0.75rem;
+      border-radius: var(--radius);
       font-size: 0.875rem;
     }}
     pre::-webkit-scrollbar {{
@@ -288,7 +280,7 @@ COMMON_HEAD = r'''
     .table-responsive {{
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      border-radius: 0.75rem;
+      border-radius: var(--radius);
     }}
     .table-responsive::-webkit-scrollbar {{
       height: 6px;
@@ -325,9 +317,8 @@ COMMON_HEAD = r'''
       letter-spacing: 0.04em;
       font-size: 0.7rem;
       color: var(--text-muted);
-      background: linear-gradient(90deg, rgba(56, 189, 248, 0.08), rgba(34, 211, 238, 0.05));
+      background: var(--bg-input);
       border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(10px);
     }}
     .data-table tbody tr {{
       transition: transform 0.2s ease, background-color 0.2s ease;
@@ -336,9 +327,9 @@ COMMON_HEAD = r'''
       transform: translateY(-1px);
     }}
     .toolbar {{
-      background: rgba(15, 23, 42, 0.04);
+      background: var(--bg-input);
       border: 1px solid var(--border);
-      border-radius: 1rem;
+      border-radius: var(--radius-lg);
       padding: 0.75rem;
       box-shadow: var(--shadow-sm);
     }}
@@ -346,9 +337,8 @@ COMMON_HEAD = r'''
       background: rgba(15, 23, 42, 0.35);
     }}
     .announcement-banner {{
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(34, 211, 238, 0.08) 60%, rgba(163, 230, 53, 0.06) 100%);
+      background: var(--bg-card);
       border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(10px);
     }}
     .announcement-banner .title {{
       color: var(--text);
@@ -358,10 +348,10 @@ COMMON_HEAD = r'''
       color: var(--text-muted);
     }}
     .btn-announcement {{
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      background: var(--primary);
       color: #fff;
       padding: 0.4rem 0.85rem;
-      border-radius: 0.5rem;
+      border-radius: var(--radius);
       font-size: 0.875rem;
       font-weight: 500;
       transition: all 0.2s ease;
@@ -370,13 +360,13 @@ COMMON_HEAD = r'''
     }}
     .btn-announcement:hover {{
       transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(56, 189, 248, 0.35);
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
     }}
     .btn-announcement-outline {{
       background: var(--bg-card);
       color: var(--text);
       padding: 0.4rem 0.85rem;
-      border-radius: 0.5rem;
+      border-radius: var(--radius);
       font-size: 0.875rem;
       border: 1px solid var(--border);
       transition: all 0.2s ease;
@@ -389,7 +379,7 @@ COMMON_HEAD = r'''
 
     /* Mode banner with gradient */
     .mode-banner {{
-      background: linear-gradient(90deg, rgba(56, 189, 248, 0.08) 0%, rgba(34, 211, 238, 0.12) 50%, rgba(163, 230, 53, 0.08) 100%);
+      background: var(--bg-card);
       border-bottom: 1px dashed var(--border);
     }}
     .mode-pill {{
@@ -434,11 +424,12 @@ COMMON_HEAD = r'''
     .feature-card {{
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 1rem;
+      border-radius: var(--radius-lg);
       padding: 1.5rem;
-      transition: all 0.3s ease;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
       position: relative;
       overflow: hidden;
+      min-height: 178px;
     }}
     .feature-card::before {{
       content: '';
@@ -447,14 +438,14 @@ COMMON_HEAD = r'''
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
+      background: var(--primary);
       opacity: 0;
       transition: opacity 0.3s ease;
     }}
     .feature-card:hover {{
       transform: translateY(-4px);
-      box-shadow: var(--shadow-lg), var(--glow);
-      border-color: var(--primary-light);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-dark);
     }}
     .feature-card:hover::before {{
       opacity: 1;
@@ -464,7 +455,7 @@ COMMON_HEAD = r'''
     .stat-card {{
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 1rem;
+      border-radius: var(--radius-lg);
       padding: 1.25rem;
       text-align: center;
       transition: all 0.3s ease;
@@ -477,7 +468,7 @@ COMMON_HEAD = r'''
       font-size: 2rem;
       font-weight: 700;
       line-height: 1.2;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      background: var(--primary);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -493,14 +484,14 @@ COMMON_HEAD = r'''
       background: var(--bg-input);
       border: 1px solid var(--border);
       color: var(--text);
-      border-radius: 0.625rem;
+      border-radius: var(--radius);
       padding: 0.625rem 0.875rem;
       transition: all 0.2s ease;
       outline: none;
     }}
     input:focus, textarea:focus, select:focus {{
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.16);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
     }}
 
     /* Gradient text */
@@ -515,25 +506,21 @@ COMMON_HEAD = r'''
     .hero-bg {{
       position: relative;
       overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
     }}
     .hero-bg::before {{
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 30% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
-                  radial-gradient(circle at 70% 80%, rgba(34, 211, 238, 0.1) 0%, transparent 50%);
-      animation: heroFloat 20s ease-in-out infinite;
-      pointer-events: none;
+      content: none;
     }}
     @keyframes heroFloat {{
       0%, 100% {{ transform: translate(0, 0) rotate(0deg); }}
       50% {{ transform: translate(-2%, 2%) rotate(1deg); }}
     }}
     .text-indigo-400,
-    .text-indigo-500 {{
+    .text-indigo-500,
+    .text-blue-400 {{
       color: var(--primary) !important;
     }}
     .text-indigo-300 {{
@@ -544,21 +531,21 @@ COMMON_HEAD = r'''
     }}
     .bg-indigo-500\/10,
     .hover\:bg-indigo-500\/10:hover {{
-      background-color: rgba(56, 189, 248, 0.12) !important;
+      background-color: rgba(37, 99, 235, 0.1) !important;
     }}
     .bg-indigo-500\/20,
     .hover\:bg-indigo-500\/20:hover {{
-      background-color: rgba(56, 189, 248, 0.2) !important;
+      background-color: rgba(37, 99, 235, 0.16) !important;
     }}
     .bg-indigo-500\/30,
     .hover\:bg-indigo-500\/30:hover {{
-      background-color: rgba(56, 189, 248, 0.3) !important;
+      background-color: rgba(37, 99, 235, 0.22) !important;
     }}
     .bg-purple-500\/20 {{
-      background-color: rgba(34, 211, 238, 0.2) !important;
+      background-color: rgba(15, 118, 110, 0.14) !important;
     }}
     .hover\:ring-indigo-500\/50:hover {{
-      --tw-ring-color: rgba(56, 189, 248, 0.5) !important;
+      --tw-ring-color: rgba(37, 99, 235, 0.38) !important;
     }}
     .hover\:text-indigo-300:hover,
     .hover\:text-indigo-400:hover {{
@@ -566,6 +553,41 @@ COMMON_HEAD = r'''
     }}
     .accent-indigo-500 {{
       accent-color: var(--primary);
+    }}
+    @media (max-width: 768px) {{
+      main {{
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }}
+      .hero-bg {{
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+        margin-left: -1rem;
+        margin-right: -1rem;
+      }}
+      .card,
+      .feature-card {{
+        padding: 1.25rem;
+      }}
+      .feature-card {{
+        min-height: 0;
+      }}
+      .toolbar,
+      .toolbar > div {{
+        width: 100%;
+      }}
+      .toolbar input,
+      .toolbar select,
+      .toolbar button {{
+        min-height: 2.5rem;
+      }}
+      .tab {{
+        white-space: nowrap;
+      }}
+      .data-table {{
+        min-width: 720px;
+      }}
     }}
   </style>
   <script>
@@ -985,7 +1007,7 @@ def render_home_page() -> str:
       series: [{{
         name: '模型能力',
         type: 'bar',
-        data: [100, 100, 70, 90, 90, 85, 85, 80],
+        data: [100, 100, 70, 90, 90, 85, 85, 80, 78],
         itemStyle: {{
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
             {{ offset: 0, color: '#818cf8' }},
@@ -2124,13 +2146,15 @@ def render_admin_login_page(error: str = "") -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Login - KiroGate</title>
   <meta name="robots" content="noindex, nofollow">
-  <script src="{get_asset_url("cdn.tailwindcss.com")}"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root {{ --bg-main: #f4f7fb; --bg-card: rgba(255, 255, 255, 0.82); --text: #0f172a; --text-muted: #64748b; --border: rgba(148, 163, 184, 0.35); --primary: #38bdf8; --bg-input: rgba(255, 255, 255, 0.9); }}
-    .dark {{ --bg-main: #05070f; --bg-card: rgba(15, 23, 42, 0.8); --text: #e2e8f0; --text-muted: #94a3b8; --border: rgba(148, 163, 184, 0.2); --bg-input: rgba(15, 23, 42, 0.85); }}
-    body {{ background: var(--bg-main); color: var(--text); font-family: 'Sora', 'Noto Sans SC', system-ui, sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; transition: background .3s, color .3s; }}
-    .card {{ background: var(--bg-card); border: 1px solid var(--border); }}
-    input {{ background: var(--bg-input); border-color: var(--border); color: var(--text); }}
+    :root {{ --bg-main: #f7f4ef; --bg-card: #ffffff; --text: #111827; --text-muted: #667085; --border: #e4e7ec; --primary: #2563eb; --primary-dark: #1d4ed8; --bg-input: #fbfaf8; --shadow: 0 18px 48px rgba(16, 24, 40, 0.12); }}
+    .dark {{ --bg-main: #0b1120; --bg-card: #111827; --text: #f8fafc; --text-muted: #a3adbd; --border: rgba(148, 163, 184, 0.22); --bg-input: #0f172a; --shadow: 0 24px 58px rgba(2, 6, 23, 0.52); }}
+    * {{ box-sizing: border-box; }}
+    body {{ background: var(--bg-main); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; transition: background .3s, color .3s; padding: 24px 16px; }}
+    .card {{ background: var(--bg-card); border: 1px solid var(--border); box-shadow: var(--shadow); }}
+    input {{ background: var(--bg-input); border-color: var(--border); color: var(--text); transition: border-color .2s ease, box-shadow .2s ease; }}
+    input:focus {{ border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14); }}
   </style>
 </head>
 <body>
@@ -2154,8 +2178,8 @@ def render_admin_login_page(error: str = "") -> str:
             class="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-indigo-500"
             placeholder="请输入管理员密码">
         </div>
-        <button type="submit" class="w-full py-3 rounded-lg font-semibold text-white transition-all hover:opacity-90"
-          style="background: var(--primary);">
+        <button type="submit" class="w-full py-3 rounded-lg font-semibold text-white transition-all"
+          style="background: var(--primary); border: 1px solid rgba(29, 78, 216, 0.28); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.18);">
           登 录
         </button>
       </form>
@@ -2202,11 +2226,9 @@ def render_admin_page() -> str:
     .card {{
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 1rem;
+      border-radius: var(--radius-lg);
       padding: 1.5rem;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
     }}
     .admin-tag {{
       background: rgba(56, 189, 248, 0.15);
@@ -2215,7 +2237,8 @@ def render_admin_page() -> str:
     }}
     .btn {{
       padding: .5rem 1rem;
-      border-radius: .75rem;
+      min-height: 2.5rem;
+      border-radius: var(--radius);
       font-weight: 600;
       transition: all .2s ease;
       cursor: pointer;
@@ -2228,22 +2251,24 @@ def render_admin_page() -> str:
       transform: translateY(-1px);
     }}
     .btn-primary {{
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 70%, var(--accent-2) 120%);
+      background: var(--primary);
       color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 12px 24px rgba(56, 189, 248, 0.28);
+      border: 1px solid rgba(29, 78, 216, 0.28);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.18);
     }}
-    .btn-primary:hover {{ box-shadow: 0 16px 36px rgba(56, 189, 248, 0.35); }}
+    .btn-primary:hover {{ background: var(--primary-dark); box-shadow: 0 14px 26px rgba(37, 99, 235, 0.22); }}
     .btn-danger {{
-      background: rgba(244, 63, 94, 0.18);
-      color: #fecdd3;
-      border: 1px solid rgba(244, 63, 94, 0.4);
+      background: rgba(220, 38, 38, 0.09);
+      color: #b91c1c;
+      border: 1px solid rgba(220, 38, 38, 0.28);
     }}
     .btn-success {{
-      background: rgba(34, 197, 94, 0.18);
-      color: #bbf7d0;
-      border: 1px solid rgba(34, 197, 94, 0.4);
+      background: rgba(22, 163, 74, 0.09);
+      color: #15803d;
+      border: 1px solid rgba(22, 163, 74, 0.28);
     }}
+    [data-theme="dark"] .btn-danger {{ color: #fecaca; }}
+    [data-theme="dark"] .btn-success {{ color: #bbf7d0; }}
     .btn:disabled {{ opacity: 0.5; cursor: not-allowed; transform: none; }}
     .tab {{
       padding: .75rem 1.25rem;
@@ -2251,6 +2276,7 @@ def render_admin_page() -> str:
       border-bottom: 2px solid transparent;
       transition: all .2s ease;
       letter-spacing: 0.02em;
+      white-space: nowrap;
     }}
     .tab:hover {{ color: var(--primary); }}
     .tab.active {{
@@ -2269,6 +2295,39 @@ def render_admin_page() -> str:
     .status-dot {{ width: 10px; height: 10px; border-radius: 50%; display: inline-block; }}
     .status-ok {{ background: var(--success); }}
     .status-error {{ background: var(--danger); }}
+    @media (max-width: 768px) {{
+      .admin-header .h-16 {{
+        height: 3.75rem;
+      }}
+      .admin-shell {{
+        padding-top: 1rem !important;
+      }}
+      .admin-shell > .grid:first-child {{
+        grid-template-columns: 1fr 1fr;
+        gap: .75rem;
+      }}
+      .admin-shell > .flex.flex-wrap.border-b {{
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: .25rem;
+      }}
+      .tab {{
+        padding: .75rem .875rem;
+        font-size: .9rem;
+      }}
+      .toolbar {{
+        align-items: stretch !important;
+      }}
+      .toolbar > div {{
+        display: grid !important;
+        grid-template-columns: 1fr;
+      }}
+      .toolbar input,
+      .toolbar select,
+      .toolbar button {{
+        width: 100% !important;
+      }}
+    }}
   </style>
 </head>
 <body>
@@ -4334,7 +4393,7 @@ def render_user_page(user) -> str:
           <div class="flex flex-wrap items-center gap-3 mb-3 toolbar">
             <h2 class="text-lg font-bold">我的 Token</h2>
             <div class="flex-1 flex items-center gap-2 flex-wrap">
-              <input type="text" id="tokensSearch" placeholder="搜索 ID 或状态..." oninput="filterTokens()" class="px-3 py-1.5 rounded-lg text-sm" style="background: var(--bg-input); border: 1px solid var(--border); min-width: 160px;">
+              <input type="search" id="tokensSearch" placeholder="搜索 ID、状态或账号..." autocomplete="off" autocapitalize="off" spellcheck="false" oninput="filterTokens()" class="px-3 py-1.5 rounded-lg text-sm" style="background: var(--bg-input); border: 1px solid var(--border); min-width: 160px;">
               <select id="tokenVisibilityFilter" onchange="filterTokens()" class="px-3 py-1.5 rounded-lg text-sm" style="background: var(--bg-input); border: 1px solid var(--border);">
                 <option value="">全部可见性</option>
                 <option value="public" class="public-only">公开</option>
@@ -4979,6 +5038,10 @@ def render_user_page(user) -> str:
     }}
 
     async function refreshTokens() {{
+      const searchInput = document.getElementById('tokensSearch');
+      if (searchInput) searchInput.value = '';
+      tokensCurrentPage = 1;
+      await loadProfile();
       await loadTokens();
     }}
 
@@ -6232,14 +6295,9 @@ def render_login_page(
 <html lang="zh">
 <head>{COMMON_HEAD}
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
     body {{
-      background:
-        radial-gradient(1200px 600px at 10% 10%, rgba(16, 185, 129, 0.14), transparent),
-        radial-gradient(900px 520px at 90% 20%, rgba(14, 165, 233, 0.16), transparent),
-        radial-gradient(800px 500px at 50% 100%, rgba(245, 158, 11, 0.12), transparent),
-        var(--bg-main);
-      font-family: "Space Grotesk", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg-main);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
     }}
     .auth-shell {{
       position: relative;
@@ -6250,7 +6308,7 @@ def render_login_page(
       position: absolute;
       inset: -10% 0 auto 0;
       height: 60%;
-      background-image: radial-gradient(circle at 20% 20%, rgba(148, 163, 184, 0.16) 0, transparent 35%);
+      background: var(--bg-soft);
       opacity: 0.6;
       pointer-events: none;
     }}
@@ -6266,7 +6324,7 @@ def render_login_page(
     .auth-card {{
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.72));
       border: 1px solid rgba(148, 163, 184, 0.35);
-      border-radius: 1.75rem;
+      border-radius: 10px;
       box-shadow: 0 32px 70px -40px rgba(15, 23, 42, 0.45);
       padding: 2rem;
       backdrop-filter: blur(18px);
@@ -6276,22 +6334,20 @@ def render_login_page(
       border-color: rgba(148, 163, 184, 0.22);
     }}
     .auth-title {{
-      font-family: "Newsreader", "Songti SC", serif;
       font-size: 2rem;
-      letter-spacing: 0.02em;
     }}
     .auth-subtitle {{
       color: var(--text-muted);
     }}
     .auth-aside {{
-      border-radius: 1.5rem;
+      border-radius: 10px;
       padding: 2rem;
       border: 1px solid rgba(148, 163, 184, 0.28);
-      background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(16, 185, 129, 0.1));
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+      background: var(--bg-card);
+      box-shadow: var(--shadow-sm);
     }}
     .dark .auth-aside {{
-      background: linear-gradient(135deg, rgba(14, 165, 233, 0.18), rgba(16, 185, 129, 0.16));
+      background: var(--bg-card);
     }}
     .auth-badge {{
       display: inline-flex;
@@ -6310,22 +6366,22 @@ def render_login_page(
       gap: 12px;
       width: 100%;
       padding: 14px 24px;
-      border-radius: 14px;
+      border-radius: 8px;
       font-weight: 600;
       font-size: 1rem;
       transition: all 0.3s ease;
       text-decoration: none;
     }}
-    .btn-login:hover {{ transform: translateY(-2px); box-shadow: 0 12px 28px -12px rgba(15, 23, 42, 0.35); }}
-    .btn-linuxdo {{ background: linear-gradient(135deg, #0ea5e9 0%, #22c55e 100%); color: white; }}
-    .btn-linuxdo:hover {{ background: linear-gradient(135deg, #0284c7 0%, #16a34a 100%); }}
+    .btn-login:hover {{ transform: translateY(-1px); box-shadow: 0 12px 28px -12px rgba(15, 23, 42, 0.35); }}
+    .btn-linuxdo {{ background: var(--primary); color: white; }}
+    .btn-linuxdo:hover {{ background: var(--primary-dark); }}
     .btn-github {{ background: #0f172a; color: white; }}
     .btn-github:hover {{ background: #111827; }}
     .auth-label {{ font-size: 0.85rem; color: var(--text-muted); }}
     .auth-input {{
       width: 100%;
       padding: 0.75rem 0.95rem;
-      border-radius: 0.85rem;
+      border-radius: 8px;
       border: 1px solid var(--border);
       background: var(--bg-input);
       color: var(--text);
@@ -6333,13 +6389,13 @@ def render_login_page(
     }}
     .auth-input:focus {{
       outline: none;
-      border-color: #0ea5e9;
-      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.18);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
     }}
     .btn-auth {{
       width: 100%;
       padding: 0.85rem 1rem;
-      border-radius: 0.9rem;
+      border-radius: 8px;
       font-weight: 600;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       border: none;
@@ -6367,7 +6423,7 @@ def render_login_page(
     .feature-icon {{
       width: 2rem;
       height: 2rem;
-      border-radius: 0.8rem;
+      border-radius: 8px;
       display: grid;
       place-items: center;
       background: rgba(255, 255, 255, 0.65);
@@ -6408,7 +6464,7 @@ def render_login_page(
               <input id="loginEmail" name="email" type="email" class="auth-input" required value="{safe_email}">
               <label class="auth-label" for="loginPassword">密码</label>
               <input id="loginPassword" name="password" type="password" class="auth-input" required>
-              <button type="submit" class="btn-auth" style="background: linear-gradient(135deg, #0ea5e9 0%, #22c55e 100%); color: #fff;">登录</button>
+              <button type="submit" class="btn-auth" style="background: var(--primary); color: #fff;">登录</button>
             </form>
             <div class="text-right">{register_link_html}</div>
           </div>
@@ -6497,14 +6553,9 @@ def render_register_page(
 <html lang="zh">
 <head>{COMMON_HEAD}
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
     body {{
-      background:
-        radial-gradient(1200px 600px at 10% 10%, rgba(16, 185, 129, 0.14), transparent),
-        radial-gradient(900px 520px at 90% 20%, rgba(14, 165, 233, 0.16), transparent),
-        radial-gradient(800px 500px at 50% 100%, rgba(245, 158, 11, 0.12), transparent),
-        var(--bg-main);
-      font-family: "Space Grotesk", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg-main);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
     }}
     .auth-shell {{
       position: relative;
@@ -6515,7 +6566,7 @@ def render_register_page(
       position: absolute;
       inset: -10% 0 auto 0;
       height: 60%;
-      background-image: radial-gradient(circle at 20% 20%, rgba(148, 163, 184, 0.16) 0, transparent 35%);
+      background: var(--bg-soft);
       opacity: 0.6;
       pointer-events: none;
     }}
@@ -6531,7 +6582,7 @@ def render_register_page(
     .auth-card {{
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.72));
       border: 1px solid rgba(148, 163, 184, 0.35);
-      border-radius: 1.75rem;
+      border-radius: 10px;
       box-shadow: 0 32px 70px -40px rgba(15, 23, 42, 0.45);
       padding: 2rem;
       backdrop-filter: blur(18px);
@@ -6541,22 +6592,20 @@ def render_register_page(
       border-color: rgba(148, 163, 184, 0.22);
     }}
     .auth-title {{
-      font-family: "Newsreader", "Songti SC", serif;
       font-size: 2rem;
-      letter-spacing: 0.02em;
     }}
     .auth-subtitle {{
       color: var(--text-muted);
     }}
     .auth-aside {{
-      border-radius: 1.5rem;
+      border-radius: 10px;
       padding: 2rem;
       border: 1px solid rgba(148, 163, 184, 0.28);
-      background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(16, 185, 129, 0.1));
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+      background: var(--bg-card);
+      box-shadow: var(--shadow-sm);
     }}
     .dark .auth-aside {{
-      background: linear-gradient(135deg, rgba(14, 165, 233, 0.18), rgba(16, 185, 129, 0.16));
+      background: var(--bg-card);
     }}
     .auth-badge {{
       display: inline-flex;
@@ -6575,22 +6624,22 @@ def render_register_page(
       gap: 12px;
       width: 100%;
       padding: 14px 24px;
-      border-radius: 14px;
+      border-radius: 8px;
       font-weight: 600;
       font-size: 1rem;
       transition: all 0.3s ease;
       text-decoration: none;
     }}
-    .btn-login:hover {{ transform: translateY(-2px); box-shadow: 0 12px 28px -12px rgba(15, 23, 42, 0.35); }}
-    .btn-linuxdo {{ background: linear-gradient(135deg, #0ea5e9 0%, #22c55e 100%); color: white; }}
-    .btn-linuxdo:hover {{ background: linear-gradient(135deg, #0284c7 0%, #16a34a 100%); }}
+    .btn-login:hover {{ transform: translateY(-1px); box-shadow: 0 12px 28px -12px rgba(15, 23, 42, 0.35); }}
+    .btn-linuxdo {{ background: var(--primary); color: white; }}
+    .btn-linuxdo:hover {{ background: var(--primary-dark); }}
     .btn-github {{ background: #0f172a; color: white; }}
     .btn-github:hover {{ background: #111827; }}
     .auth-label {{ font-size: 0.85rem; color: var(--text-muted); }}
     .auth-input {{
       width: 100%;
       padding: 0.75rem 0.95rem;
-      border-radius: 0.85rem;
+      border-radius: 8px;
       border: 1px solid var(--border);
       background: var(--bg-input);
       color: var(--text);
@@ -6598,13 +6647,13 @@ def render_register_page(
     }}
     .auth-input:focus {{
       outline: none;
-      border-color: #0ea5e9;
-      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.18);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
     }}
     .btn-auth {{
       width: 100%;
       padding: 0.85rem 1rem;
-      border-radius: 0.9rem;
+      border-radius: 8px;
       font-weight: 600;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       border: none;
@@ -6632,7 +6681,7 @@ def render_register_page(
     .feature-icon {{
       width: 2rem;
       height: 2rem;
-      border-radius: 0.8rem;
+      border-radius: 8px;
       display: grid;
       place-items: center;
       background: rgba(255, 255, 255, 0.65);
@@ -6675,7 +6724,7 @@ def render_register_page(
               <input id="registerUsername" name="username" type="text" class="auth-input" value="{safe_username}">
               <label class="auth-label" for="registerPassword">密码（至少 8 位）</label>
               <input id="registerPassword" name="password" type="password" class="auth-input" required minlength="8">
-              <button type="submit" class="btn-auth" style="background: linear-gradient(135deg, #0f172a 0%, #1f2937 100%); color: #fff;" {register_disabled}>注册</button>
+              <button type="submit" class="btn-auth" style="background: var(--primary); color: #fff;" {register_disabled}>注册</button>
               <div class="text-xs" style="color: var(--text-muted);">
                 {("注册后需管理员审核通过" if require_approval else "注册成功后可直接登录") if not self_use_enabled else "自用模式下禁止新注册"}
               </div>

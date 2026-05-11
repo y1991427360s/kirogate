@@ -1,6 +1,16 @@
 # Deno
 .deno/
 
+# Python
+__pycache__/
+*.py[cod]
+
+# Node / Playwright tooling
+node_modules/
+
+# Runtime data
+data/
+
 # IDE / Editor
 .claude/
 .spec-workflow/

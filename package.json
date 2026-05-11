@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "screenshot": "node scripts/screenshot-check.js",
+    "build": "python3 -m py_compile main.py kiro_gateway/*.py"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0"
+  }
+}

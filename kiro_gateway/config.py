@@ -498,7 +498,12 @@ KIRO_Q_HOST_TEMPLATE: str = "https://q.{region}.amazonaws.com"
 
 # External model names (OpenAI compatible) -> Kiro internal ID
 MODEL_MAPPING: Dict[str, str] = {
-    # Claude Opus 4.5 - Top tier model
+    # Claude Opus models
+    "claude-opus-4.7": "claude-opus-4.7",
+    "claude-opus-4-7": "claude-opus-4.7",
+    "claude-opus-4.6": "claude-opus-4.6",
+    "claude-opus-4-6": "claude-opus-4.6",
+    "claude-opus-4.5": "claude-opus-4.5",
     "claude-opus-4-5": "claude-opus-4.5",
     "claude-opus-4-5-20251101": "claude-opus-4.5",
 
@@ -508,7 +513,10 @@ MODEL_MAPPING: Dict[str, str] = {
     "claude-haiku-4.5": "claude-haiku-4.5",
 
     # Claude Sonnet 4.5 - Enhanced model
+    "claude-sonnet-4.6": "claude-sonnet-4.6",
+    "claude-sonnet-4-6": "claude-sonnet-4.6",
     "claude-sonnet-4-5": "CLAUDE_SONNET_4_5_20250929_V1_0",
+    "claude-sonnet-4.5": "claude-sonnet-4.5",
     "claude-sonnet-4-5-20250929": "CLAUDE_SONNET_4_5_20250929_V1_0",
 
     # Claude Sonnet 4 - Balanced model
@@ -518,21 +526,33 @@ MODEL_MAPPING: Dict[str, str] = {
     # Claude 3.7 Sonnet - Legacy model
     "claude-3-7-sonnet-20250219": "CLAUDE_3_7_SONNET_20250219_V1_0",
 
+    # Kiro CLI model IDs
+    "deepseek-3.2": "deepseek-3.2",
+    "deepseek-v3.2": "deepseek-3.2",
+    "minimax-m2.5": "minimax-m2.5",
+    "minimax-m2.1": "minimax-m2.1",
+    "glm-5": "glm-5",
+    "qwen3-coder-next": "qwen3-coder-next",
+
     # Convenience aliases
-    "auto": "claude-sonnet-4.5",
+    "auto": "auto",
 }
 
 # Available models list for /v1/models endpoint
 AVAILABLE_MODELS: List[str] = [
-    "claude-opus-4-5",
-    "claude-opus-4-5-20251101",
-    "claude-haiku-4-5",
-    "claude-haiku-4-5-20251001",
-    "claude-sonnet-4-5",
-    "claude-sonnet-4-5-20250929",
+    "claude-opus-4.7",
+    "claude-opus-4.6",
+    "claude-opus-4.5",
+    "claude-sonnet-4.6",
+    "claude-sonnet-4.5",
     "claude-sonnet-4",
-    "claude-sonnet-4-20250514",
-    "claude-3-7-sonnet-20250219",
+    "claude-haiku-4.5",
+    "deepseek-3.2",
+    "minimax-m2.5",
+    "minimax-m2.1",
+    "glm-5",
+    "qwen3-coder-next",
+    "auto",
 ]
 
 # ==================================================================================================
